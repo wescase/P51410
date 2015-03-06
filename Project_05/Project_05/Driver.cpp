@@ -4,8 +4,8 @@
 * File: Driver.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written: March 5th 2015
-* Description: Write the users information to file and read back to the user when requested.
+* Date Written: March 6th 2015
+* Description: Write the account information to file and read back to the user when requested. using an inheritance architecture
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,
@@ -70,15 +70,15 @@ int main()
 
 		string type;
 		getline(in, type);
-
+		// test sentinal in file for which Obj type to create
 		if (type == "check")
 			ptr = new Checking;
 		else if (type == "save")
 			ptr = new Savings;
-
+		// if no Obj created/ no address
 		if (ptr != nullptr)
 		{
-			try
+			try // to read data and push back in
 			{
 				ptr->readAccData(in);
 				accVector.push_back(ptr);

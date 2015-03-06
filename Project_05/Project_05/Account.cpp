@@ -4,8 +4,8 @@
 * File: Account.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written: March 5th 2015
-* Description: Write the users information to file and read back to the user when requested.
+* Date Written: March 6th 2015
+* Description: Write the account information to file and read back to the user when requested. using an inheritance architecture
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,
@@ -59,6 +59,7 @@ void Account::readAccData(ifstream& _file)
 
 	getline(_file, accNum);
 	getline(_file, accBal);
+	// if error in read thorw exc
 	if (_file.fail() && !_file.eof())
 	{
 		throw FileError(READ_ERROR);
@@ -117,6 +118,8 @@ void Person::readPerData(ifstream& _file)
 {
 	getline(_file, name);
 	getline(_file, address);
+
+	// if error in read throw error
 	if (_file.fail() && !_file.eof())
 	{
 		throw FileError(READ_ERROR);

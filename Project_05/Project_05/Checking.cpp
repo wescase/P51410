@@ -4,8 +4,8 @@
 * File: Checking.cpp
 * Instructor: Dr. DeBry
 * Class: CS1410-001
-* Date Written: March 5th 2015
-* Description: Write the users information to file and read back to the user when requested.
+* Date Written: March 6th 2015
+* Description: Write the account information to file and read back to the user when requested. using an inheritance architecture
 *
 * I declare the the following source code was written by Wes and Morgan,
 * I understand the copying of any source code in whole or in part constitutes cheating,
@@ -21,7 +21,6 @@ Checking::Checking()
 	monthlyFee = 0;
 }
 
-// prolog - done
 Checking::Checking(Person* _human, int _account, double _bal, double _fee)
 	: Account(_human, _account, _bal)
 {
@@ -54,9 +53,9 @@ void Checking::readAccData(ifstream& _file)
 	{
 		throw FileError(END_OF_FILE);
 	}
-	// read the string and turn to double set as monthly fee.
 	string temp = "";
 	getline(_file, temp);
+	// read the string and turn to double set as monthly fee.
 	monthlyFee = stod(temp);
 	// Have Account read in its data.
 	Account::readAccData(_file);
@@ -64,5 +63,4 @@ void Checking::readAccData(ifstream& _file)
 
 Checking::~Checking()
 {
-
 }
