@@ -45,9 +45,16 @@ int main()
 	// New : Close the file.
 	dataOut.close();
 
+	// Before clearing the pointers, you must delete the Objects or they will be held in memory and mess up program.
+	int size = accVector.size();
+	for (unsigned i = 0; i < size; i++)
+	{
+		delete accVector[i];
+	}
+
 	// New : Clear the vector.
 	accVector.clear();
-
+	
 	// create ifstream object to read file
 	ifstream in;
 
@@ -119,6 +126,13 @@ int main()
 	// Finally, pass the vector to your displayAccounts function to display the account information for each Account object in the vector.
 	displayAccounts(accVector);
 
+	// Before clearing the pointers, you must delete the Objects or they will be held in memory and mess up program.
+	int size2 = accVector.size();
+	for (unsigned i = 0; i < size2; i++)
+	{
+		delete accVector[i];
+	}
+
 	cout << endl;
 	system("Pause");
 	return 0;
@@ -135,8 +149,7 @@ void displayAccounts(const vector<Account*>& _aVector)
 	{
 		cout.setf(ios::fixed);
 		cout.precision(2);
-		cout << _aVector[i]->getAccountNumber() << "\t" << _aVector[i]->getPerson().getName()
-			<< "\t\t" << _aVector[i]->getPerson().getAddress() << "\t\t$" << _aVector[i]->getAccountBalance() << endl;
+		cout << _aVector[i]->getAccountNumber() << "\t" << _aVector[i]->getPerson().getName() << "\t\t" << _aVector[i]->getPerson().getAddress() << "\t\t$" << _aVector[i]->getAccountBalance() << endl;
 	}
 }
 

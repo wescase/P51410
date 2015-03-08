@@ -18,16 +18,20 @@
 // --------------- Account Class Methods -------------------
 Account::Account()
 {
-	human = Person();
+	human = new Person;
 	accBalance = 0.00;
 	accNumber = 0;
 }
 
 Account::Account(Person* _human, double _accBalance, int _accNumber)
 {
-	human = *_human;
+	human = _human;
 	accBalance = _accBalance;
 	accNumber = _accNumber;
+}
+
+Account::~Account()
+{
 }
 
 int Account::getAccountNumber() const
@@ -42,14 +46,14 @@ double Account::getAccountBalance() const
 
 Person Account::getPerson() const
 {
-	return human;
+	return *human;
 }
 
 void Account::writeAccData(ofstream& _file) const
 {
 	_file << accBalance << endl;
 	_file << accNumber << endl;
-	human.writePerData(_file);
+	human->writePerData(_file);
 }
 
 void Account::readAccData(ifstream& _file)
@@ -69,7 +73,7 @@ void Account::readAccData(ifstream& _file)
 		throw FileError(END_OF_FILE);
 	}
 	// Have the person class read its own data
-	human.readPerData(_file);
+	human->readPerData(_file);
 
 	accNumber = stoi(accNum);
 	accBalance = stod(accBal);
@@ -96,6 +100,10 @@ Person::Person(const string& _name, const string& _address)
 {
 	name = _name;
 	address = _address;
+}
+
+Person::~Person()
+{
 }
 
 string Person::getName() const

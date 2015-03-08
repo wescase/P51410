@@ -36,6 +36,8 @@ public:
 	// returns: none
 	Person(const string& _name, const string& _address);
 
+	Person::~Person();
+
 	// getName()
 	// Purpose: retrieve the Person objects name property
 	// Parameters: none
@@ -81,6 +83,8 @@ public:
 	// Parameters: Person object, double balance, int account number
 	// Returns: none
 	Account(Person* _human, double _accBalance, int _accNumber);
+
+	Account::~Account();
 
 	// getAccountNumber()
 	// Purpose: get the account number
@@ -129,5 +133,5 @@ public:
 protected:
 	int accNumber;
 	double accBalance;
-	Person human;
+	Person* human;
 }; // End Account Class
